@@ -21,7 +21,14 @@ exports.delete = async (id) => {
 }
 
 exports.getById = async (id) => {
-    const result = await Product.findById(id);
+    const result = await Product.findOne({_id : id}, "_id title description categoryId price active urlImage");
+
+    return result;
+}
+
+exports.getByCategoryId = async (id) => {
+    const result = await Product.find({categoryId : id}, "_id title description categoryId price active urlImage");
+ 
     return result;
 }
 
@@ -30,8 +37,9 @@ exports.udpate = async(id, data) => {
         $set:{
             title : data.title, 
             description : data.description, 
-            price : data.price
+            price : data.price, 
+            categoryId : data.categoryId, 
+            urlImage : data.urlImage
         }
-
     })
 }

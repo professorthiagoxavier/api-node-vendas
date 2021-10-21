@@ -12,6 +12,12 @@ const schema = new Schema({
         type: String,
         required: true
     },
+    categoryId: {
+        type: String
+    },
+    urlImage: {
+        type: String
+    },
     price: {
         type: Number,
         required: true

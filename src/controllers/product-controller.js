@@ -51,6 +51,36 @@ exports.put = async(req, res, next) => {
     }
 }
 
+exports.getByCategoryId = async(req, res, next) => {
+    try {
+        const data = await repository.getByCategoryId(req.params.id);
+        if(data == null)
+            res.status(404).send();
+
+        res.status(200).send(data);
+
+    } catch (error) {
+        res.status(500).send({
+            message : "Erro ao buscar o produto por categoria."
+        })
+    }
+}
+
+exports.getById = async(req, res, next) => {
+    try {
+        const data = await repository.getById(req.params.id);
+        if(data == null)
+            res.status(404).send();
+
+        res.status(200).send(data);
+
+    } catch (error) {
+        res.status(500).send({
+            message : "Erro ao buscar o produto por categoria."
+        })
+    }
+}
+
 exports.delete = async(req, res, next) => {
     const id = req.params.id;
 
